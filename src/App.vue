@@ -1,28 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div>
+      <input  type='radio' name='status' checked="checked" @change='toAll'>すべて
+      <input  type='radio' name='status' @change='toWorking'>作業中
+      <input  type='radio' name='status' @change='toDone'>完了
+    </div>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  methods: {
+    toAll() {
+      this.$router.push({name: 'Main'})
+    },
+    toWorking() {
+      this.$router.push({name: 'Working'})
+    },
+    toDone() {
+      this.$router.push({name: 'Done'})
+    },
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+
